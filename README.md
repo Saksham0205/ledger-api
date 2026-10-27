@@ -84,17 +84,6 @@ The migration command prepares the private TypeORM migration schema before apply
 migrations. It is safe to run again; TypeORM skips migrations already recorded as applied. Keep
 `TEST_DATABASE_URL` pointed at Docker's local `ledger_test` database when running end-to-end tests.
 
-## Deploy to Render with Supabase
-
-The [`render.yaml`](render.yaml) Blueprint creates the web service. In Render, create a Blueprint
-from this repository and set `DATABASE_URL` to the Supabase **Session pooler** URL as a secret. The
-Blueprint sets `DATABASE_SSL=true`, runs compiled migrations, starts the API, and checks `/health`.
-Once deployed, the API base path is `/api/v1` and Swagger is at `/docs`.
-
-The Blueprint currently uses Render's free web service plan and runs migrations during service
-startup. It is configured for one service instance; move migrations to a one-time deploy step before
-scaling to multiple instances.
-
 ## Tests
 
 ```bash
